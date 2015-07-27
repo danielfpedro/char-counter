@@ -14,68 +14,73 @@
         // minified (especially when both are regularly referenced in your plugin).
 
         // Create the defaults once
-        var pluginName = "niceCharacter",
+        var pluginName = "niceCharCounter",
             defaults = {
-                max: 100,
+                limit: 100,
                 warningPercent: 70,
                 successColor: "#29b664",
                 warningColor: "#c0392b",
                 overColor: "#e74c3c",
                 containerText: "#counter-text",
-                text: "{{residual}}"
+                hardLimit: false,
+                text: "{{remainder}}"
             };
 
         // The actual plugin constructor
         function Plugin ( element, options ) {
-                this.element = element;
-                // jQuery has an extend method which merges the contents of two or
-                // more objects, storing the result in the first object. The first object
-                // is generally empty as we don"t want to alter the default options for
-                // future instances of the plugin
-                this.settings = $.extend( {}, defaults, options );
-                this._defaults = defaults;
-                this._name = pluginName;
+            this.element = element;
+            // jQuery has an extend method which merges the contents of two or
+            // more objects, storing the result in the first object. The first object
+            // is generally empty as we don"t want to alter the default options for
+            // future instances of the plugin
+            this.settings = $.extend( {}, defaults, options );
+            this._defaults = defaults;
+            this._name = pluginName;
+            
+            this.init();
 
-        var _this = this;
-      
-                this.init();
-        $(this.element).keyup(function(){
-          var $this= $(this);
-          var total = $this.val().length;
-          var $span = $(_this.settings.containerText).children("span");
-          var residual = _this.settings.max - total;
-          var warning = Math.round((_this.settings.max * _this.settings.warningPercent) / 100);
-          
-          if (residual <= warning && residual >= 0) {
-            $span.css("color", _this.settings.warningColor);
-          } else if (residual < 0) {
-            $span.css("color", _this.settings.overColor);
-          } else {
-            $span.css("color", _this.settings.successColor);
-          }
-            $span.html(residual);
-        });
+            var _this = this;
+
+            $(this.element).keyup(function(){
+                var $this= $(this);
+                var total = $this.val().length;
+                _this.doAction(total);
+            });
         }
 
         // Avoid Plugin.prototype conflicts
         $.extend(Plugin.prototype, {
-                init: function () {
-                        // Place initialization logic here
-                        // You already have access to the DOM element and
-                        // the options via the instance, e.g. this.element
-                        // and this.settings
-                        // you can add more functions like the one below and
-                        // call them like so: this.yourOtherFunction(this.element, this.settings).
-                        console.log("xD");
-            var text = this.settings.text.replace("{{residual}}", "<span>" + this.settings.max + "</span>");
-            $(this.settings.containerText).html(text);
+            tey: function(){
+                console.log("tey");
+            },
+            init: function () {
 
-            $(this.settings.containerText).children("span").css("color", this.settings.successColor);
-            $(this.settings.containerText).insertAfter($(this.element));
-                },
-                yourOtherFunction: function () {
-                        // some logic
+                if (this.settings.hardLimit) {
+                    $(this.element).attr("maxlength", this.settings.limit);
                 }
+
+                var text = this.settings.text.replace("{{remainder}}", "<span class=\"charsValue\">" + this.settings.limit + "</span>");
+                $(this.settings.containerText).html(text);
+
+                $(this.settings.containerText).children("span.charsValue").css("color", this.settings.successColor);
+                $(this.settings.containerText).insertAfter($(this.element));
+
+                this.doAction($(this.element).val().length);
+            },
+            doAction: function (total) {
+                var $span = $(this.settings.containerText).children("span.charsValue");
+                var residual = this.settings.limit - total;
+                var warning = Math.round((this.settings.limit * this.settings.warningPercent) / 100);
+                  
+                if (residual <= warning && residual >= 0) {
+                    $span.css("color", this.settings.warningColor);
+                } else if (residual < 0) {
+                    $span.css("color", this.settings.overColor);
+                } else {
+                    $span.css("color", this.settings.successColor);
+                }
+                $span.html(residual);
+            }
         });
 
         // A really lightweight plugin wrapper around the constructor,

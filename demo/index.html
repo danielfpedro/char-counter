@@ -6,11 +6,12 @@
 		<script src="../src/jquery.boilerplate.js"></script>
 	</head>
 	<body>
-		<div id="element"></div>
+		<textarea>Olá mundo!</textarea>
+		<div id="counter-text"></div>
 		<script>
 			$(function() {
-				$("#element").defaultPluginName({
-					propertyName: "a custom value"
+				$("textarea").niceCharCounter({
+					text: "{{remainder}} faltando"
 				});
 			});
 		</script>
