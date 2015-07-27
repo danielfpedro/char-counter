@@ -2,12 +2,14 @@
 
 ### Como usar
 
+1. Javascript
+
 ```javascript
-//Javascript
 $('#element').niceCharCounter({//opções aqui});
 ```
+2. HTML
+
 ```html
-//HTML
 <textarea id="element"></textarea>
 <div id="counter-text"></div>
 ```
