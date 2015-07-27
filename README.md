@@ -23,5 +23,11 @@ Você pode customizar o texto do contador usando a opção `text`. Use o placeho
     text: '{{remainder}} caracteres restantes...' 
     ```
 
+	```javascript
+	$("#element").defaultPluginName({
+		propertyName: "a custom value"
+	});
+	```
+
 ### Hard Limit
 Caso a opção `hardlimit` seja setada como `true` o plugin irá usar o atributo `maxlength` na `textarea`. Versões mais antigas de alguns Browsers não interpretam `maxlength` em `textareas` logo esta opção não surtirá efeito.
