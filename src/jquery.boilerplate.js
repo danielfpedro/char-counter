@@ -60,10 +60,15 @@
                 }
 
                 var text = this.settings.text.replace("{{remainder}}", "<span class=\"charsValue\">" + this.settings.limit + "</span>");
+
+                if ($(this.settings.containerText).length < 1) {
+                    console.error("You have to set the container text");
+                    return false;
+                }
+
                 $(this.settings.containerText).html(text);
 
                 $(this.settings.containerText).children("span.charsValue").css("color", this.settings.successColor);
-                $(this.settings.containerText).insertAfter($(this.element));
 
                 this.doAction($(this.element).val().length);
             },
