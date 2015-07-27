@@ -19,9 +19,9 @@
 ### Texto do contador
 Você pode customizar o texto do contador usando a opção `text`. Use o placeholder `{{remainder}}` para mostrar o total dos caracteres restantes, por exemplo:
 
-    ```javascript
-    text: '{{remainder}} caracteres restantes...' 
-    ```
+```javascript
+text: '{{remainder}} caracteres restantes...' 
+```
 
 	```javascript
 	$("#element").defaultPluginName({
