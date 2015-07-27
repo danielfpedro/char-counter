@@ -11,7 +11,7 @@ $('#element').niceCharCounter({//opções aqui});
 
 ```html
 <textarea id="element"></textarea>
-<div id="counter-text"></div>
+<div id="counter"></div>
 ```
 
 ### Opções
@@ -20,12 +20,12 @@ $('#element').niceCharCounter({//opções aqui});
 * successColor: (string)"#29b664",
 * warningColor: (string)"#c0392b",
 * overColor: (string)"#e74c3c",
-* containerText: (string)"#counter-text",
+* counter: (string)"#counter",
 * text: (string)"{{remainder}}",
 * hardLimit: (boolean)false
 
-### Container Text
-Para uma maior flexibilidade você deve especificar o elemento aonde será renderizado, com isso você poderá colocar o seu contador em qualquer parte do documento e inserir classes extras para customizar o texto.
+### Contador
+Para uma maior flexibilidade você deve especificar o elemento aonde será renderizadoo contador, com isso você poderá coloca-lo em qualquer parte do documento e inserir classes extras para customização.
 
 ### Texto do contador
 Você pode customizar o texto do contador usando a opção `text`. Use o placeholder `{{remainder}}` para mostrar o total dos caracteres restantes, por exemplo:

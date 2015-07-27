@@ -3,17 +3,14 @@
 	<head>
 		<title>jQuery Boilerplate</title>
 		<script src="http://ajax.googleapis.com/ajax/libs/jquery/2.0.0/jquery.min.js"></script>
-		<script src="../src/jquery.boilerplate.js"></script>
+		<script src="../src/nice-char-counter.js"></script>
 	</head>
 	<body>
 		<textarea>Olá mundo!</textarea>
-		<div id="counter-text"></div>
+		<div id="counter"></div>
 		<script>
 			$(function() {
-				$("textarea").niceCharCounter({
-					text: "{{remainder}} faltando",
-					hardLimit: true
-				});
+				$("textarea").niceCharCounter();
 			});
 		</script>
 	</body>
