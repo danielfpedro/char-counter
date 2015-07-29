@@ -15,19 +15,21 @@ $('#element').niceCharCounter({//opções aqui});
 ```
 
 ### Opções
-* limit: (int)100,
-* descending: (boolean)true,
-* warningPercent: (int)70,
-* successColor: (string)"#29b664",
-* warningColor: (string)"#c0392b",
-* overColor: (string)"#e74c3c",
-* counter: (string)"#counter",
-* text: (string)"{{remainder}}",
-* hardLimit: (boolean)false
+```javascript
+limit: (int)100,
+descending: (boolean)true,
+warningPercent: (int)70,
+successColor: (string)"#29b664",
+warningColor: (string)"#c0392b",
+overColor: (string)"#e74c3c",
+counter: (string)"#counter",
+text: (string)"{{remainder}}",
+hardLimit: (boolean)false,
+onType: function(total, remaining, remainingPercent, options{
+	
+}
+```
 
-### Eventos
-
-* onType: function(**(int)total**, **(int)remaining** , **(int)remainingPercent**, **(object)options**){}
 * clearLimitTrigger: function((int)total, (int)remaining, (int)remainingPercent, (object)options){}
 * onClearLimit: function((int)total, (int)remaining, (int)remainingPercent, (object)options){}
 * warningTrigger: function((int)total, (int)remaining, (int)remainingPercent, (object)options){}
