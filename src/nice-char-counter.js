@@ -19,7 +19,7 @@
                 limit: 100,
                 descending: true,
                 warningPercent: 70,
-                successColor: "#29b664",
+                clearLimitColor: "#29b664",
                 warningColor: "#c0392b",
                 overColor: "#e74c3c",
                 counter: "#counter",
@@ -112,7 +112,7 @@
 
                 $(this.settings.counter).html(text);
 
-                $(this.settings.counter).children("span.charsValue").css("color", this.settings.successColor);
+                $(this.settings.counter).children("span.charsValue").css("color", this.settings.clearLimitColor);
 
                 this.doAction($(this.element).val().length);
             },
@@ -139,7 +139,7 @@
                     this.setStateAndTrigger("over", ui);
 
                 } else{
-                    $span.css("color", this.settings.successColor); // acima do warning
+                    $span.css("color", this.settings.clearLimitColor); // acima do warning
                     this.settings.onClearLimit(ui);
                     
                     this.setStateAndTrigger("clearLimit", ui);

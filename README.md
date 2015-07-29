@@ -19,7 +19,7 @@ $('#element').niceCharCounter({//opções aqui});
 limit: (int)100,
 descending: (boolean)true,
 warningPercent: (int)70,
-successColor: (string)"#29b664",
+clearLimitColor: (string)"#29b664",
 warningColor: (string)"#c0392b",
 overColor: (string)"#e74c3c",
 counter: (string)"#counter",
