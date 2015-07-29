@@ -26,21 +26,28 @@ counter: (string)"#counter",
 text: (string)"{{remainder}}",
 hardLimit: (boolean)false,
 // Eventos e Triggers
-onType: function((object)ui, (object)options){
+onType: function(ui, options){
 },
-clearLimitTrigger: function((object)ui, (object)options){	
+clearLimitTrigger: function(ui, options){	
 },
-onClearLimit: function((object)ui, (object)options){
+onClearLimit: function(ui, options){
 },
-warningTrigger: function((object)ui, (object)options){
+warningTrigger: function(ui, options){
 },
-onWarning: function((object)ui, (object)options){
+onWarning: function(ui, options){
 },
-overTrigger: function((object)ui, (object)options){
+overTrigger: function(ui, options){
 },
-onOver: function((object)ui, (object)options){	
+onOver: function(ui, options){	
 }
 ```
+
+* (object) ui
+ * (int) total 
+ * (int) remaining
+ * (int) remainingPercent
+*(object) options
+ * Opções passadas no plugin
 
 ### Contador
 Para uma maior flexibilidade você deve especificar o elemento aonde será renderizadoo contador, com isso você poderá coloca-lo em qualquer parte do documento e inserir classes extras para customização.
