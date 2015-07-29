@@ -1,5 +1,10 @@
 # Nice Char Counter
 
+### Instalação
+```
+bower install nice-char-counter
+```
+
 ### Como usar
 
 ###### Javascript
