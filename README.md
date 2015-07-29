@@ -27,7 +27,7 @@ $('#element').niceCharCounter({//opções aqui});
 
 ### Eventos
 
-* onType: function( (int)total , (int)remaining , (int)remainingPercent , (object)options ){}
+* onType: function(**(int)total**, **(int)remaining** , **(int)remainingPercent**, **(object)options**){}
 * clearLimitTrigger: function((int)total, (int)remaining, (int)remainingPercent, (object)options){}
 * onClearLimit: function((int)total, (int)remaining, (int)remainingPercent, (object)options){}
 * warningTrigger: function((int)total, (int)remaining, (int)remainingPercent, (object)options){}
