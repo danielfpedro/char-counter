@@ -34,25 +34,25 @@
                 hardLimit: false,
                 text: "{{counter}}",
                 onType: function(){
-                    console.log("On Type");
+                    //console.log("On Type");
                 },
                 clearLimitTrigger: function(){
-                    console.log("Clear Limit Trigger");
+                    //console.log("Clear Limit Trigger");
                 },
                 onClearLimit: function(){
-                    console.log("On Clear Limit");
+                    //console.log("On Clear Limit");
                 },
                 warningTrigger: function(){
-                    console.log("Warning Trigger");
+                    //console.log("Warning Trigger");
                 },
                 onWarning: function(){
-                    console.log("On Warning");
+                    //console.log("On Warning");
                 },
                 overTrigger: function(){
-                    console.log("Over Trigger");
+                    //console.log("Over Trigger");
                 },
                 onOver: function(){
-                    console.log("On Over");
+                   //console.log("On Over");
                 }
             };
 
