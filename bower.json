@@ -7,9 +7,15 @@
   ],
   "description": "Simple and flexible Jquery Plugin textarea characters counter",
   "main": "src/jquery.nice-char-counter.js",
+  "ignore": [
+    "demo",
+    "src",
+    "**/.*"
+  ],
   "keywords": [
     "jquery",
     "plugin",
+    "nice",
     "character",
     "counter",
     "textarea"
