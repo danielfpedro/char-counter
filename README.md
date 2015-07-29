@@ -26,9 +26,9 @@ counter: (string)"#counter",
 text: (string)"{{remainder}}",
 hardLimit: (boolean)false,
 // Eventos e Triggers
-onType: function(ui, options){
+onType: function(ui, state, options){
 },
-clearLimitTrigger: function(ui, options){	
+clearLimitTrigger: function(ui, state, options){	
 },
 onClearLimit: function(ui, options){
 },
@@ -46,7 +46,8 @@ onOver: function(ui, options){
  * (int) total 
  * (int) remaining
  * (int) remainingPercent
-*(object) options
+* (string) state
+* (object) options
  * Opções passadas no plugin
 
 ### Contador
@@ -58,13 +59,17 @@ Você pode customizar o texto do contador usando a opção `text`. Use o placeho
 ```javascript
 text: '{{remainder}} caracteres restantes...' 
 ```
-### Eventos
-Os eventos são disparados quando qualquer tecla é presionada e lógica é satisfeita, segue abaixo a referencia:
 
-* onType - Sempre é disparado.
-* onClearLimit - Quando o total de caracteres é maior que o limite do `warning`.
-* onWarning - Quando está na zona do warning.
-* onOver - Quando o total de characteres digitados excede o limite.
+### Estados
+* clearLimit - Total de characteres digitados é maior que a zona de `warning`.
+* warning - Total de characteres digitados está na zona de `warning`.
+* over - Total de characteres digitados foi excedido.
+
+### Evento
+É disparado a cada vez que a tecla é presionada de acordo com o estado atual.
+
+### Trigger
+É verificado a cada vez que a tecla é presionada e disparado apenas uma vez a cada estado atual.
 
 ### Hard Limit
 Caso a opção `hardlimit` seja setada como `true` o plugin irá usar o atributo `maxlength` na `textarea`. Versões mais antigas de alguns Browsers não interpretam `maxlength` em `textareas` logo esta opção não surtirá efeito.

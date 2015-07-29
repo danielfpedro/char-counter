@@ -108,8 +108,6 @@
                 remainingPercent = (remainingPercent < 100) ? remainingPercent : 100;
 
                 var ui = {tota: total, remaining: remaining, remainingPercent: remainingPercent};
-
-                this.settings.onType(ui);
                   
                 if (this.settings.warningPercent > 0 && remaining <= this.warningFactor && remaining >= 0) {
                     $span.css("color", this.settings.warningColor); // quase
@@ -130,6 +128,9 @@
                     this.setStateAndTrigger("clearLimit", ui);
 
                 }
+
+                this.settings.onType(ui, this.currentState, this.settings);
+
                 if (this.settings.descending) {
                     $span.html(remaining);
                 } else {

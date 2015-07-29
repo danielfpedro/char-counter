@@ -30,9 +30,10 @@
 					descending: false,
 					warningPercent: 0,
 					hardLimit: false,
-					onType: function(total, remaining, remainingPercent) {
-						console.log(remainingPercent);
-						$(".bar").css("width", remainingPercent + "%") ;
+					onType: function(ui, state, options) {
+						console.log(state);
+						console.log(options);
+						$(".bar").css("width", ui.remainingPercent + "%") ;
 					}
 				});
 			});
