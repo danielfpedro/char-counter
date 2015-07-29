@@ -1,13 +1,13 @@
 # Nice Char Counter
 
-# Como usar
+### Como usar
 
-#Javascript
+###### Javascript
 
 ```javascript
 $('#element').niceCharCounter({//opções aqui});
 ```
-###HTML
+###### HTML
 
 ```html
 <textarea id="element"></textarea>
