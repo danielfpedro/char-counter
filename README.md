@@ -25,17 +25,22 @@ overColor: (string)"#e74c3c",
 counter: (string)"#counter",
 text: (string)"{{remainder}}",
 hardLimit: (boolean)false,
-onType: function(total, remaining, remainingPercent, options{
-	
+// Eventos e Triggers
+onType: function((int)total, (int)remaining, (int)remainingPercent, (object)options){
+},
+clearLimitTrigger: function((int)total, (int)remaining, (int)remainingPercent, (object)options){	
+},
+onClearLimit: function((int)total, (int)remaining, (int)remainingPercent, (object)options){
+},
+warningTrigger: function((int)total, (int)remaining, (int)remainingPercent, (object)options){
+},
+onWarning: function((int)total, (int)remaining, (int)remainingPercent, (object)options){
+},
+overTrigger: function((int)total, (int)remaining, (int)remainingPercent, (object)options){
+},
+onOver: function((int)total, (int)remaining, (int)remainingPercent, (object)options){	
 }
 ```
-
-* clearLimitTrigger: function((int)total, (int)remaining, (int)remainingPercent, (object)options){}
-* onClearLimit: function((int)total, (int)remaining, (int)remainingPercent, (object)options){}
-* warningTrigger: function((int)total, (int)remaining, (int)remainingPercent, (object)options){}
-* onWarning: function((int)total, (int)remaining, (int)remainingPercent, (object)options){}
-* overTrigger: function((int)total, (int)remaining, (int)remainingPercent, (object)options){}
-* onOver: function((int)total, (int)remaining, (int)remainingPercent, (object)options){}
 
 ### Contador
 Para uma maior flexibilidade você deve especificar o elemento aonde será renderizadoo contador, com isso você poderá coloca-lo em qualquer parte do documento e inserir classes extras para customização.
