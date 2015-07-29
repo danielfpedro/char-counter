@@ -8,9 +8,13 @@
   "description": "Simple and flexible Jquery Plugin textarea characters counter",
   "main": "src/jquery.nice-char-counter.js",
   "ignore": [
+    "**/.*",
     "demo",
     "src",
-    "**/.*"
+    "*.md",
+    "Gruntfile.js",
+    "package.json",
+    "boilerplate.jquery.json"
   ],
   "keywords": [
     "jquery",
