@@ -24,7 +24,7 @@
                 overColor: "#e74c3c",
                 counter: "#counter",
                 hardLimit: false,
-                text: "{{remainder}}",
+                text: "{{counter}}",
                 onType: function(){
                     console.log("On Type");
                 },
@@ -87,7 +87,23 @@
                     $(this.element).attr("maxlength", this.settings.limit);
                 }
 
-                var text = this.settings.text.replace("{{remainder}}", "<span class=\"charsValue\">" + this.settings.limit + "</span>");
+                var text = this.settings.text.replace("{{counter}}", "<span class=\"nice-remaining\"></span>");
+                text = text.replace("{{limit}}", "<span class=\"nice-limit\">" + this.settings.limit + "</span>");
+                /**
+                 * Verifica se tem alguma coisa com o padrao [singular, plural] e marca os spans
+                 * devidos
+                 */
+                var pattern = /\[\w+\,\s?\w+\]/g; // [singular, plural]
+                var result = text.match(pattern); // Pega todas as ocorrencias
+                console.log(result);
+                if (result) {
+                    $.each(result, function(index, val) {
+                        var words = val.replace(/\[/g, "").replace(/\]/g, "").split(",");
+                        var singular = words[0];
+                        var plural = words[1];
+                        text = text.replace(val, "<span class=\"nice-inflector\" data-singular="+singular+" data-plural="+plural+"></span>");
+                    });
+                }
 
                 if ($(this.settings.counter).length < 1) {
                     console.error("You have to set the counter");
@@ -101,7 +117,8 @@
                 this.doAction($(this.element).val().length);
             },
             doAction: function (total) {
-                var $span = $(this.settings.counter).children("span.charsValue");
+                var $span = $(this.settings.counter).children("span.nice-remaining");
+
                 var remaining = this.settings.limit - total;
 
                 var remainingPercent = Math.round((total * 100) / this.settings.limit);
@@ -126,8 +143,15 @@
                     this.settings.onClearLimit(ui);
                     
                     this.setStateAndTrigger("clearLimit", ui);
-
                 }
+
+                var descending = this.settings.descending;
+                $("span.nice-inflector").each(function(){
+                    var $this = $(this);
+                    var factor = (descending) ? remaining : total;
+                    var word = (factor === 1 || factor === 0) ? $this.data("singular") : $this.data("plural");
+                    $this.text(word);
+                });
 
                 this.settings.onType(ui, this.currentState, this.settings);
 

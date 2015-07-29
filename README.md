@@ -2,12 +2,12 @@
 
 ### Como usar
 
-1. Javascript
+###Javascript
 
 ```javascript
 $('#element').niceCharCounter({//opções aqui});
 ```
-2. HTML
+###HTML
 
 ```html
 <textarea id="element"></textarea>
@@ -23,12 +23,12 @@ successColor: (string)"#29b664",
 warningColor: (string)"#c0392b",
 overColor: (string)"#e74c3c",
 counter: (string)"#counter",
-text: (string)"{{remainder}}",
+text: (string)"{{counter}}",
 hardLimit: (boolean)false,
 // Eventos e Triggers
 onType: function(ui, state, options){
 },
-clearLimitTrigger: function(ui, state, options){	
+clearLimitTrigger: function(ui, options){	
 },
 onClearLimit: function(ui, options){
 },
@@ -50,16 +50,6 @@ onOver: function(ui, options){
 * (object) options
  * Opções passadas no plugin
 
-### Contador
-Para uma maior flexibilidade você deve especificar o elemento aonde será renderizadoo contador, com isso você poderá coloca-lo em qualquer parte do documento e inserir classes extras para customização.
-
-### Texto do contador
-Você pode customizar o texto do contador usando a opção `text`. Use o placeholder `{{remainder}}` para mostrar o total dos caracteres restantes, por exemplo:
-
-```javascript
-text: '{{remainder}} caracteres restantes...' 
-```
-
 ### Estados
 * clearLimit - Total de characteres digitados é maior que a zona de `warning`.
 * warning - Total de characteres digitados está na zona de `warning`.
@@ -69,7 +59,20 @@ text: '{{remainder}} caracteres restantes...'
 É disparado a cada vez que a tecla é presionada de acordo com o estado atual.
 
 ### Trigger
-É verificado a cada vez que a tecla é presionada e disparado apenas uma vez a cada estado atual.
+É disparado apenas uma vez a cada estado atual.
+
+### Contador
+Para uma maior flexibilidade você deve especificar o elemento aonde será renderizadoo contador, com isso você poderá coloca-lo em qualquer parte do documento e inserir classes extras para customização.
+
+### Placeholders do texto do contador
+* {{counter}} - Caracteres restantes (descending = true) ou total de caracteres digitados (descending = false)
+* {{limit}} - Limie de caracteres
+
+### Texto do contato com palavras no singular ou plural
+Exemplo: 
+```javascript
+text: '{{counter}} caracte[r, res] restant[e, es] de um total de {{limit}}...' 
+```
 
 ### Hard Limit
 Caso a opção `hardlimit` seja setada como `true` o plugin irá usar o atributo `maxlength` na `textarea`. Versões mais antigas de alguns Browsers não interpretam `maxlength` em `textareas` logo esta opção não surtirá efeito.
