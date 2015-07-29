@@ -26,19 +26,19 @@ counter: (string)"#counter",
 text: (string)"{{remainder}}",
 hardLimit: (boolean)false,
 // Eventos e Triggers
-onType: function((int)total, (int)remaining, (int)remainingPercent, (object)options){
+onType: function((object)ui, (object)options){
 },
-clearLimitTrigger: function((int)total, (int)remaining, (int)remainingPercent, (object)options){	
+clearLimitTrigger: function((object)ui, (object)options){	
 },
-onClearLimit: function((int)total, (int)remaining, (int)remainingPercent, (object)options){
+onClearLimit: function((object)ui, (object)options){
 },
-warningTrigger: function((int)total, (int)remaining, (int)remainingPercent, (object)options){
+warningTrigger: function((object)ui, (object)options){
 },
-onWarning: function((int)total, (int)remaining, (int)remainingPercent, (object)options){
+onWarning: function((object)ui, (object)options){
 },
-overTrigger: function((int)total, (int)remaining, (int)remainingPercent, (object)options){
+overTrigger: function((object)ui, (object)options){
 },
-onOver: function((int)total, (int)remaining, (int)remainingPercent, (object)options){	
+onOver: function((object)ui, (object)options){	
 }
 ```
 

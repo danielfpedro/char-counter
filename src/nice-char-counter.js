@@ -107,25 +107,27 @@
                 var remainingPercent = Math.round((total * 100) / this.settings.limit);
                 remainingPercent = (remainingPercent < 100) ? remainingPercent : 100;
 
-                this.settings.onType(total, remaining, remainingPercent);
+                var ui = {tota: total, remaining: remaining, remainingPercent: remainingPercent};
+
+                this.settings.onType(ui);
                   
                 if (this.settings.warningPercent > 0 && remaining <= this.warningFactor && remaining >= 0) {
                     $span.css("color", this.settings.warningColor); // quase
-                    this.settings.onWarning(total, remaining, remainingPercent);
+                    this.settings.onWarning(ui);
                     
-                    this.setStateAndTrigger("warning", total, remaining, remainingPercent);
+                    this.setStateAndTrigger("warning", ui);
 
                 } else if (remaining < 0) {
                     $span.css("color", this.settings.overColor); // estourou
-                    this.settings.onOver(total, remaining, remainingPercent, this.setting);
+                    this.settings.onOver(ui);
                     
-                    this.setStateAndTrigger("over", total, remaining, remainingPercent);
+                    this.setStateAndTrigger("over", ui);
 
                 } else{
                     $span.css("color", this.settings.successColor); // acima do warning
-                    this.settings.onClearLimit(total, remaining, remainingPercent, this.setting);
+                    this.settings.onClearLimit(ui);
                     
-                    this.setStateAndTrigger("clearLimit", total, remaining, remainingPercent);
+                    this.setStateAndTrigger("clearLimit", ui);
 
                 }
                 if (this.settings.descending) {
@@ -135,9 +137,9 @@
                 }
                 
             },
-            setStateAndTrigger: function (state, total, remaining, remainingPercent){
+            setStateAndTrigger: function (state, ui){
                 if (state !== this.currentState) {
-                    this.settings[state + "Trigger"](total, remaining, remainingPercent, this.setting);
+                    this.settings[state + "Trigger"](ui, this.setting);
                 }
                 this.currentState = state;
             }
