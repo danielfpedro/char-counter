@@ -17,17 +17,39 @@
         var pluginName = "niceCharCounter",
             defaults = {
                 limit: 100,
+                descending: true,
                 warningPercent: 70,
                 successColor: "#29b664",
                 warningColor: "#c0392b",
                 overColor: "#e74c3c",
                 counter: "#counter",
                 hardLimit: false,
-                text: "{{remainder}}"
+                text: "{{remainder}}",
+                onType: function(){
+                    console.log("On Type");
+                },
+                clearLimitTrigger: function(){
+                    console.log("Clear Limit Trigger");
+                },
+                onClearLimit: function(){
+                    console.log("On Clear Limit");
+                },
+                warningTrigger: function(){
+                    console.log("Warning Trigger");
+                },
+                onWarning: function(){
+                    console.log("On Warning");
+                },
+                overTrigger: function(){
+                    console.log("Over Trigger");
+                },
+                onOver: function(){
+                    console.log("On Over");
+                }
             };
 
         // The actual plugin constructor
-        function Plugin ( element, options ) {
+        function Plugin (element, options) {
             this.element = element;
             // jQuery has an extend method which merges the contents of two or
             // more objects, storing the result in the first object. The first object
@@ -36,6 +58,11 @@
             this.settings = $.extend( {}, defaults, options );
             this._defaults = defaults;
             this._name = pluginName;
+
+            this.currentState = "";
+
+            var warningFactor = Math.round((this.settings.limit * this.settings.warningPercent) / 100);
+            this.warningFactor = this.settings.limit - warningFactor;
             
             this.init();
 
@@ -44,6 +71,7 @@
             $(this.element).keyup(function(){
                 var $this= $(this);
                 var total = $this.val().length;
+
                 _this.doAction(total);
             });
         }
@@ -74,17 +102,44 @@
             },
             doAction: function (total) {
                 var $span = $(this.settings.counter).children("span.charsValue");
-                var residual = this.settings.limit - total;
-                var warning = Math.round((this.settings.limit * this.settings.warningPercent) / 100);
+                var remaining = this.settings.limit - total;
+
+                var remainingPercent = Math.round((total * 100) / this.settings.limit);
+                remainingPercent = (remainingPercent < 100) ? remainingPercent : 100;
+
+                this.settings.onType(total, remaining, remainingPercent);
                   
-                if (residual <= warning && residual >= 0) {
-                    $span.css("color", this.settings.warningColor);
-                } else if (residual < 0) {
-                    $span.css("color", this.settings.overColor);
-                } else {
-                    $span.css("color", this.settings.successColor);
+                if (this.settings.warningPercent > 0 && remaining <= this.warningFactor && remaining >= 0) {
+                    $span.css("color", this.settings.warningColor); // quase
+                    this.settings.onWarning(total, remaining, remainingPercent);
+                    
+                    this.setStateAndTrigger("warning", total, remaining, remainingPercent);
+
+                } else if (remaining < 0) {
+                    $span.css("color", this.settings.overColor); // estourou
+                    this.settings.onOver(total, remaining, remainingPercent, this.setting);
+                    
+                    this.setStateAndTrigger("over", total, remaining, remainingPercent);
+
+                } else{
+                    $span.css("color", this.settings.successColor); // acima do warning
+                    this.settings.onClearLimit(total, remaining, remainingPercent, this.setting);
+                    
+                    this.setStateAndTrigger("clearLimit", total, remaining, remainingPercent);
+
                 }
-                $span.html(residual);
+                if (this.settings.descending) {
+                    $span.html(remaining);
+                } else {
+                    $span.html(total);
+                }
+                
+            },
+            setStateAndTrigger: function (state, total, remaining, remainingPercent){
+                if (state !== this.currentState) {
+                    this.settings[state + "Trigger"](total, remaining, remainingPercent, this.setting);
+                }
+                this.currentState = state;
             }
         });
 

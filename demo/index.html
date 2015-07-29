@@ -5,12 +5,36 @@
 		<script src="http://ajax.googleapis.com/ajax/libs/jquery/2.0.0/jquery.min.js"></script>
 		<script src="../src/nice-char-counter.js"></script>
 	</head>
+	<style>
+		.progress{
+			width: 200px;
+			height: 15px;
+			border: 1px solid blue;
+		}
+		.bar{
+			background: red;
+			width: 1%;
+			height: 100%;
+		}
+	</style>
 	<body>
-		<textarea>Olá mundo!</textarea>
+		<textarea autofocus></textarea>
 		<div id="counter"></div>
+<div class="progress">
+	<div class="bar"></div>
+</div>
 		<script>
 			$(function() {
-				$("textarea").niceCharCounter();
+				$("textarea").niceCharCounter({
+					limit: 10,
+					descending: false,
+					warningPercent: 0,
+					hardLimit: false,
+					onType: function(total, remaining, remainingPercent) {
+						console.log(remainingPercent);
+						$(".bar").css("width", remainingPercent + "%") ;
+					}
+				});
 			});
 		</script>
 	</body>

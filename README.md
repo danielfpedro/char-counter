@@ -16,6 +16,7 @@ $('#element').niceCharCounter({//opções aqui});
 
 ### Opções
 * limit: (int)100,
+* descending: (boolean)true,
 * warningPercent: (int)70,
 * successColor: (string)"#29b664",
 * warningColor: (string)"#c0392b",
@@ -23,6 +24,13 @@ $('#element').niceCharCounter({//opções aqui});
 * counter: (string)"#counter",
 * text: (string)"{{remainder}}",
 * hardLimit: (boolean)false
+* onType: function((int)total, (int)remaining, (int)remainingPercent, (object)options){}
+* clearLimitTrigger: function((int)total, (int)remaining, (int)remainingPercent, (object)options){}
+* onClearLimit: function((int)total, (int)remaining, (int)remainingPercent, (object)options){}
+* warningTrigger: function((int)total, (int)remaining, (int)remainingPercent, (object)options){}
+* onWarning: function((int)total, (int)remaining, (int)remainingPercent, (object)options){}
+* overTrigger: function((int)total, (int)remaining, (int)remainingPercent, (object)options){}
+* onOver: function((int)total, (int)remaining, (int)remainingPercent, (object)options){}
 
 ### Contador
 Para uma maior flexibilidade você deve especificar o elemento aonde será renderizadoo contador, com isso você poderá coloca-lo em qualquer parte do documento e inserir classes extras para customização.
@@ -33,6 +41,13 @@ Você pode customizar o texto do contador usando a opção `text`. Use o placeho
 ```javascript
 text: '{{remainder}} caracteres restantes...' 
 ```
+### Eventos
+Os eventos são disparados quando qualquer tecla é presionada e lógica é satisfeita, segue abaixo a referencia:
+
+* onType - Sempre é disparado.
+* onClearLimit - Quando o total de caracteres é maior que o limite do `warning`.
+* onWarning - Quando está na zona do warning.
+* onOver - Quando o total de characteres digitados excede o limite.
 
 ### Hard Limit
 Caso a opção `hardlimit` seja setada como `true` o plugin irá usar o atributo `maxlength` na `textarea`. Versões mais antigas de alguns Browsers não interpretam `maxlength` em `textareas` logo esta opção não surtirá efeito.
