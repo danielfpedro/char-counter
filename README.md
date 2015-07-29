@@ -1,8 +1,8 @@
 # Nice Char Counter
 
-### Como usar
+# Como usar
 
-###Javascript
+#Javascript
 
 ```javascript
 $('#element').niceCharCounter({//opções aqui});
@@ -66,9 +66,9 @@ Para uma maior flexibilidade você deve especificar o elemento aonde será rende
 
 ### Placeholders do texto do contador
 * {{counter}} - Caracteres restantes (descending = true) ou total de caracteres digitados (descending = false)
-* {{limit}} - Limie de caracteres
+* {{limit}} - Limite de caracteres
 
-### Texto do contato com palavras no singular ou plural
+### Texto do contador com palavras no singular ou plural
 Exemplo: 
 ```javascript
 text: '{{counter}} caracte[r, res] restant[e, es] de um total de {{limit}}...' 
