@@ -1,11 +1,11 @@
 # Nice Char Counter
 
-### Instalação
-```
+## Instalação
+``` bash
 bower install nice-char-counter
 ```
 
-### Como usar
+## Como usar
 
 ###### Javascript
 
@@ -19,7 +19,7 @@ $('#element').niceCharCounter({//opções aqui});
 <div id="counter"></div>
 ```
 
-### Opções
+## Opções
 ```javascript
 limit: (int)100,
 descending: (boolean)true,
@@ -55,29 +55,29 @@ onOver: function(ui, options){
 * (object) options
  * Opções passadas no plugin
 
-### Estados
+## Estados
 * clearLimit - Total de characteres digitados é maior que a zona de `warning`.
 * warning - Total de characteres digitados está na zona de `warning`.
 * over - Total de characteres digitados foi excedido.
 
-### Evento
+## Evento
 É disparado a cada vez que a tecla é presionada de acordo com o estado atual.
 
-### Trigger
+## Trigger
 É disparado apenas uma vez a cada estado atual.
 
-### Contador
+## Contador
 Para uma maior flexibilidade você deve especificar o elemento aonde será renderizadoo contador, com isso você poderá coloca-lo em qualquer parte do documento e inserir classes extras para customização.
 
-### Placeholders do texto do contador
+## Placeholders do texto do contador
 * {{counter}} - Caracteres restantes (descending = true) ou total de caracteres digitados (descending = false)
 * {{limit}} - Limite de caracteres
 
-### Texto do contador com palavras no singular ou plural
+## Texto do contador com palavras no singular ou plural
 Exemplo: 
 ```javascript
 text: '{{counter}} caracte[r, res] restant[e, es] de um total de {{limit}}...' 
 ```
 
-### Hard Limit
+## Hard Limit
 Caso a opção `hardlimit` seja setada como `true` o plugin irá usar o atributo `maxlength` na `textarea`. Versões mais antigas de alguns Browsers não interpretam `maxlength` em `textareas` logo esta opção não surtirá efeito.
